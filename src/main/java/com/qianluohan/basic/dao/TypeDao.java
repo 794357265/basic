@@ -1,13 +1,13 @@
 package com.qianluohan.basic.dao;
 
-import com.qianluohan.basic.entity.Item;
+import com.github.pagehelper.Page;
+import com.qianluohan.basic.entity.Type;
 import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
 
 @Mapper
 public interface TypeDao {
 
-    void saveItems(List<Item> items);
+
+    Page<Type> list();
 
 }
