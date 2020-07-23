@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
 /**
-* @author zhangyibing  zhangyibing@bmsoft.com.cn
+* @author zhangyibing  qianluohan.com
 * @Date 2020/6/1
 * @desription 异常处理器
 **/
@@ -21,6 +21,7 @@ public class CustomizedExceptionHandler {
 	 */
 	@ExceptionHandler(CustomizedException.class)
 	public Result handleRRException(CustomizedException e){
+		System.out.println("catch CustomizedException--");
 		Result r = new Result();
 		r.put("code", e.getCode());
 		r.put("msg", e.getMessage());
@@ -29,6 +30,7 @@ public class CustomizedExceptionHandler {
 
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public Result handlerNoFoundException(Exception e) {
+		System.out.println("catch NoHandlerFoundException--");
 		logger.error(e.getMessage(), e);
 		return Result.error(404, "路径不存在，请检查路径是否正确");
 	}
@@ -36,6 +38,6 @@ public class CustomizedExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public Result handleException(Exception e){
 		logger.error(e.getMessage(), e);
-		return Result.error();
+		return Result.error().put("error", e.getMessage());
 	}
 }

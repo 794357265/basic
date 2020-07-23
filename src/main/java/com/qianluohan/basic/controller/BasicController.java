@@ -30,5 +30,11 @@ public class BasicController {
         throw new CustomizedException("test");
     }
 
+    @GetMapping("/index3")
+    @ResponseBody
+    public Map<String, Object> index3(){
+        return Result.ok().put("1", 1/0);
+    }
+
 
 }

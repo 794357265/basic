@@ -3,7 +3,11 @@ package com.qianluohan.basic.utils;
 import com.github.pagehelper.Page;
 
 import java.util.List;
-
+/**
+* @author zhangyibing  qianluohan.com
+* @Date 2020/6/9
+* @desription
+**/
 public class MyPageUtil<E>  {
     /**
      * 当前页

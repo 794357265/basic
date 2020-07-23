@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
-* @author zhangyibing  zhangyibing@bmsoft.com.cn
+* @author zhangyibing  qianluohan.com
 * @Date 2020/6/1
 * @desription 数据返回模型
 **/

@@ -1,7 +1,7 @@
 package com.qianluohan.basic.exception;
 
 /**
-* @author zhangyibing  zhangyibing@bmsoft.com.cn
+* @author zhangyibing  qianluohan.com
 * @Date 2020/6/1
 * @desription 自定义异常
 **/
