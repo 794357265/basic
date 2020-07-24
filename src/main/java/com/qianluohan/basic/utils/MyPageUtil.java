@@ -1,6 +1,6 @@
 package com.qianluohan.basic.utils;
 
-import com.github.pagehelper.Page;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 
 import java.util.List;
 /**
@@ -12,54 +12,62 @@ public class MyPageUtil<E>  {
     /**
      * 当前页
      */
-    private int pageNum;
+    private long pageNum;
     /**
      * 总条数
      */
-    private int total;
+    private long total;
     /**
      * 总页数
      */
-    private int totalPage;
+    private long totalPage;
     /**
      * 页长
      */
-    private int pageSize;
+    private long pageSize;
     /**
      * 数据
      */
     private List<E> data;
 
     public MyPageUtil(Page<E> page) {
-        this.pageNum = page.getPageNum();
-        this.total = page.getEndRow();
+        this.pageNum = page.getCurrent();
+        this.total = page.getTotal();
         this.totalPage = page.getPages();
-        this.pageSize = page.getPageSize();
-        this.data = page.getResult();
+        this.pageSize = page.getSize();
+        this.data = page.getRecords();
     }
 
-    public int getPageNum() {
+    public long getPageNum() {
         return pageNum;
     }
 
-    public void setPageNum(int pageNum) {
+    public void setPageNum(long pageNum) {
         this.pageNum = pageNum;
     }
 
-    public int getTotal() {
+    public long getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(long total) {
         this.total = total;
     }
 
-    public int getTotalPage() {
+    public long getTotalPage() {
         return totalPage;
     }
 
-    public void setTotalPage(int totalPage) {
+    public void setTotalPage(long totalPage) {
         this.totalPage = totalPage;
+    }
+
+    public long getPageSize() {
+        return pageSize;
+    }
+
+    public void setPageSize(long pageSize) {
+        this.pageSize = pageSize;
     }
 
     public List<E> getData() {
@@ -70,11 +78,14 @@ public class MyPageUtil<E>  {
         this.data = data;
     }
 
-    public int getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(int pageSize) {
-        this.pageSize = pageSize;
+    @Override
+    public String toString() {
+        return "MyPageUtil{" +
+                "pageNum=" + pageNum +
+                ", total=" + total +
+                ", totalPage=" + totalPage +
+                ", pageSize=" + pageSize +
+                ", data=" + data +
+                '}';
     }
 }

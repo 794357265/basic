@@ -7,6 +7,7 @@ import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -23,6 +24,9 @@ import java.util.Map;
 @Configuration
 public class ShiroConfig {
 
+    @Value("${com.qianluohan.isLogin}")
+    private boolean isLogin;
+
     @Bean("securityManager")
     public SecurityManager securityManager(OAuth2Realm oAuth2Realm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
@@ -35,20 +39,23 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager);
+        System.out.println("isLogin-->>"+ isLogin);
+        //判断是否开启登录
+        if(isLogin){
+            //oauth过滤
+            Map<String, Filter> filters = new HashMap<>();
+            filters.put("oauth2", new OAuth2Filter());
+            shiroFilter.setFilters(filters);
 
-        //oauth过滤
-        Map<String, Filter> filters = new HashMap<>();
-        filters.put("oauth2", new OAuth2Filter());
-        shiroFilter.setFilters(filters);
-
-        Map<String, String> filterMap = new LinkedHashMap<>();
-        //设置不过滤的接口地址
-        //获取验证码
-        filterMap.put("/captcha.jpg", "anon");
-        //登录
-        filterMap.put("/login", "anon");
-        filterMap.put("/**", "oauth2");
-        shiroFilter.setFilterChainDefinitionMap(filterMap);
+            Map<String, String> filterMap = new LinkedHashMap<>();
+            //设置不过滤的接口地址
+            //获取验证码
+            filterMap.put("/captcha.jpg", "anon");
+            //登录
+            filterMap.put("/login", "anon");
+            filterMap.put("/**", "oauth2");
+            shiroFilter.setFilterChainDefinitionMap(filterMap);
+        }
 
         return shiroFilter;
     }

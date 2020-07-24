@@ -134,10 +134,10 @@ final public class StringUtils {
 		}
 		return result;
 	}
-	public static  String generatoryId(){
+	public static  String generateId(){
 		return UUID.randomUUID().toString().substring(0, 30).toString().replace("-", "");
 	}
-	public static  String generatoryId32(){
+	public static  String generateId32(){
 		return UUID.randomUUID().toString().replace("-", "");
 	}
 	public static  String set2String(Set<String> set,String file){
@@ -176,7 +176,6 @@ final public class StringUtils {
 		}
 		String ret = str.substring(0, str.length()-1);
 		return ret + ")";
-//		return list.toString().replace("[", "('").replace(",", "','").replace(" ", "").replace("]", "')");//值中如果包含空格，此种处理方式会过滤掉空格
 	}
 	public static  String List2StringNoWhere(List<String> list,String file){
 		if(list == null || list.isEmpty()) {
@@ -195,7 +194,6 @@ final public class StringUtils {
 			str = str + file + " not in " + List2String(list.subList((count-1)*size, list.size()));
 		str="("+str+")";
 		}
-		System.out.println("List2StringNoWhere>>>>>  "+str);
 		return str;
 	}
 	/**
@@ -215,12 +213,12 @@ final public class StringUtils {
 		return orderbyql.toString();
 	}
 	public static Collection<List<String>> listZhuanzhi (List<List<String>> values) {
-		Map<Integer,List<String>> map = new LinkedHashMap<Integer,List<String>>();
+		Map<Integer,List<String>> map = new LinkedHashMap<>();
 		for(List<String> value : values) {
 			for (int i = 0; i < value.size(); i++) {
 				List<String> temp = map.get(i);
 				if (temp == null) {
-					temp = new ArrayList<String>();
+					temp = new ArrayList<>();
 				}
 				temp.add(value.get(i));
 				map.put(i, temp);

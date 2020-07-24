@@ -1,7 +1,5 @@
 package com.qianluohan.basic.controller;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.qianluohan.basic.entity.Type;
 import com.qianluohan.basic.service.TypeService;
 import com.qianluohan.basic.utils.MyPageUtil;
@@ -20,10 +18,9 @@ public class TypeController {
 
     @GetMapping("/list")
     public Result getTypeList(){
-        PageHelper.startPage(2, 3);
-        Page<Type> list = typeService.list();
+        MyPageUtil<Type> list = typeService.list1();
         System.out.println("list-->>"+ list);
-        return Result.ok().put("data", new MyPageUtil<Type>(list));
+        return Result.ok().put("data", list);
     }
 
 }
