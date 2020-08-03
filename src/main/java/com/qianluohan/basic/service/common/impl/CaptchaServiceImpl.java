@@ -1,6 +1,8 @@
 package com.qianluohan.basic.service.common.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.code.kaptcha.Producer;
+import com.qianluohan.basic.dao.common.CaptchaDao;
 import com.qianluohan.basic.entity.common.Captcha;
 import com.qianluohan.basic.exception.CustomizedException;
 import com.qianluohan.basic.service.common.CaptchaService;
@@ -13,7 +15,7 @@ import java.awt.image.BufferedImage;
 import java.util.Date;
 
 @Service("captchaService")
-public class CaptchaServiceImpl implements CaptchaService {
+public class CaptchaServiceImpl extends ServiceImpl<CaptchaDao, Captcha> implements CaptchaService {
 
     @Autowired
     private Producer producer;
@@ -31,7 +33,7 @@ public class CaptchaServiceImpl implements CaptchaService {
         captchaEntity.setCode(code);
         //5分钟后过期
         captchaEntity.setExpireTime(DateUtils.addDateMinutes(new Date(), 5));
-        //this.save(captchaEntity);
+        this.save(captchaEntity);
 
         return producer.createImage(code);
     }

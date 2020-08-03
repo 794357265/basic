@@ -1,17 +1,18 @@
 package com.qianluohan.basic.entity.common;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
 
 /**
-* @author zhangyibing  zhangyibing@bmsoft.com.cn
+* @author zhangyibing  zhangyibing618@163.com
 * @Date 2020/7/23
 * @desription 用户token关联表
 **/
 @Data
-//@TableName("t_user_token")
+@TableName("t_user_token")
 public class UserToken implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

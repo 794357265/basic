@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
-* @author zhangyibing  zhangyibing@bmsoft.com.cn
+* @author zhangyibing  zhangyibing618@163.com
 * @Date 2020/7/23
 * @desription oauth2过滤器
 **/

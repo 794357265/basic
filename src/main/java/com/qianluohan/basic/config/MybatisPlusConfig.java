@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
-* @author zhangyibing  zhangyibing@bmsoft.com.cn
+* @author zhangyibing  zhangyibing618@163.com
 * @Date 2020/7/24
 * @desription mybatis-plus配置
 **/
