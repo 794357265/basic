@@ -50,7 +50,6 @@ public class ShiroConfig implements EnvironmentAware {
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager);
-        System.out.println("isLogin-->>"+ isLogin);
         //判断是否开启登录
         if("true".equals(isLogin)){
             //oauth过滤
